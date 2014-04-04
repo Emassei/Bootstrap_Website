@@ -1,0 +1,72 @@
+.wrap{
+  position: relative;
+  margin: 0 auto;
+  width: 250px;
+  height: 350px;
+  cursor: pointer;
+}
+.wrap div{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 45px rgba(255,255,255,.3) 0 12px 20px -10px rgba(0, 0, 0,.4);
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px rgba(0,0,0,.3);
+  font: bold 3em sans-serif;
+  line-height: 350px;
+}
+.side-a{
+  background: #333632 url('http://erniemassei.altervista.org/Img/owlbw.jpg');
+   background-size: 350px;
+}
+.side-b{
+  background: #333638 url('http://erniemassei.altervista.org/Img/ME.jpg');
+   background-size: 250px;
+}
+
+
+/* ----------------------------Notes---------------------------------*/
+
+/*To make a flip card
+
+*/
+
+/* 
+This (-webkit-perspective) allows the items in the body to gain a 3-d plane
+anything from 800px to 1000px is to be expected.
+
+perspective-origin: takes two values x and y. left center right top bottom
+under 50% to the left, and over 50% to the right.
+*/
+
+
+
+.wrap div{
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+}
+
+
+
+.side-a{
+  z-index:100;
+}
+.side-b{
+  -webkit-transform: rotatey(-180deg);
+}
+/*
+We have to "connect" the wrap element with the hover, through placing the 
+webkit hover into the wrap transition.
+*/
+
+.wrap{
+  transition: -webkit-transform, 3s ease;
+  -webkit-transform-style:preserve-3d;
+}
+
+.wrap:hover{
+  -webkit-transform: rotate3d(0,1,0,180deg); 
+}
